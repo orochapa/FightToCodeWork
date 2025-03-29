@@ -1,0 +1,68 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Container Styling */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    animation: gradientAnimation 10s ease infinite;
+}
+
+/* Animated Grid Pattern */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1) 1px, transparent 1px, transparent 40px);
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.8);
+    animation: glow 2s infinite alternate;
+}
+
+/* Text Styling */
+h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, 0 0 15px #ffff00;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+}
+
+/* Keyframe Animations */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 20px rgba(255, 0, 150, 0.8); }
+    100% { box-shadow: 0 0 30px rgba(0, 255, 150, 0.8); }
+}
