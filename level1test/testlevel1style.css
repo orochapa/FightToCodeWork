@@ -1,0 +1,10 @@
+#gameCanvas {
+    width: 75%;
+    height: 75%;
+    border: 4px solid black;  /* Optional border to visualize the canvas edges */
+    position: absolute;       /* Position the canvas absolutely within its parent container */
+    top: 50%;                 /* Position from the top of the viewport */
+    left: 50%;                /* Position from the left of the viewport */
+    transform: translate(-50%, -50%);  /* Shift it back by 50% of its width and height */
+    z-index: -1;              /* Push the canvas to the background */
+}
