@@ -5,20 +5,21 @@
     box-sizing: border-box;
 }
 
-/* Body and Container Styling */
+/* Body Styling */
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-family: 'Courier New', monospace;
     color: #fff;
-    overflow: hidden;
     background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     animation: gradientAnimation 10s ease infinite;
+    overflow: hidden;
 }
 
-/* Animated Grid Pattern */
+/* Retro Grid Overlay */
 body::before {
     content: "";
     position: fixed;
@@ -31,16 +32,16 @@ body::before {
     z-index: -1;
 }
 
+/* Container */
 .container {
-    text-align: center;
-    padding: 40px;
     background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 0, 150, 0.8);
     animation: glow 2s infinite alternate;
 }
 
-/* Text Styling */
+/* Header Text */
 h1 {
     font-size: 4rem;
     text-transform: uppercase;
@@ -49,13 +50,34 @@ h1 {
     text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, 0 0 15px #ffff00;
 }
 
+/* Paragraph Text */
 p {
     font-size: 1.5rem;
     color: #00ffff;
     text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
 }
 
-/* Keyframe Animations */
+/* Button Styling (if you decide to add buttons) */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background: #ff00ff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px #ff00ff;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* Animations */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
