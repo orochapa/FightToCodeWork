@@ -23,10 +23,19 @@ background.onload = () => {
 
 
     // Create a character using the factory method
-    const character = createCharacter('RightKnight.png', 0, 200, 500, 500);  // Adjust size and position
+    // ctx.drawImage(image, dx, dy, dWidth, dHeight);
+    const character = createCharacter('RightKnight.png', 0, 240, 250, 300);  
+    // Ensure the character is drawn only after the image is fully loaded
     character.image.onload = () => {
         character.draw(ctx);  // Draw the character on the canvas
     };
 
+    // Check if the character image failed to load
+    character.image.onerror = () => {
+        console.error("Failed to load character image: RightKnight.png");
+    };
+
+    // Listen for keydown events to move the character
+    document.addEventListener('keydown', (event) => characterAction(event, character));  // Pass the character object to the function
 };
 
