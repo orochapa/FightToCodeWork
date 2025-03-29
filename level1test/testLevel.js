@@ -28,5 +28,11 @@ background.onload = () => {
         character.draw(ctx);  // Draw the character on the canvas
     };
 
+
+     // Check if the character image failed to load
+     character.image.onerror = () => {
+        console.error("Failed to load character image: RightKnight.png");
+    };
+
 };
 

@@ -11,6 +11,7 @@ class Character {
 
     // Draw the character on the canvas
     draw(ctx) {
+        console.log("Drawing character at:", this.x, this.y);  // Debugging log
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
 }
