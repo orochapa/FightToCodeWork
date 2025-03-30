@@ -65,13 +65,24 @@ const bgMusic = document.getElementById('bg-music');
 
 // Play the music when the game starts
 document.addEventListener('keydown', (event) => {
-    if (event.code === 'Space' && startScreen.style.display !== 'none') {
-        startScreen.style.display = 'none';
-        gameControls.style.display = 'flex';
+    if (event.code === 'Space') {
+        // Check if the start screen is visible and space was pressed
+        if (startScreen.style.display !== 'none') {
+            startScreen.style.display = 'none';
+            gameControls.style.display = 'flex';
 
-        // Start the music
-        bgMusic.play().catch(error => console.log("Music play error:", error));
-        console.log("Game started with music!");
+            // Start background music
+            bgMusic.play().catch(error => console.log("Music play error:", error));
+            console.log("Game started with music!");
+
+            // Hide the back button
+            const backButton = document.getElementById('backButton');
+            if (backButton) {
+                backButton.style.display = 'none'; // Hide the back button
+            } else {
+                console.error("Back button not found!");
+            }
+        }
     }
 });
 
@@ -80,3 +91,4 @@ window.addEventListener('beforeunload', () => {
     bgMusic.pause();
     bgMusic.currentTime = 0;  // Reset the music
 });
+

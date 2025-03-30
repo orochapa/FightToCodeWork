@@ -202,4 +202,31 @@
     background-color: #30ff30;
     color: black;
 }
+
+/* Back to Welcome Button Style */
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    font-family: 'Press Start 2P', monospace, Arial;
+    color: #30ff30;
+    background-color: #000;
+    border: 3px solid #30ff30;
+    text-decoration: none;
+    box-shadow: 0 0 10px #30ff30;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    bottom: 40px;         /* Keep it below the "Press Space" message */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 150;          /* Ensure it's above the canvas but below modals */
+}
+
+.back-button:hover {
+    background-color: #30ff30;
+    color: #000;
+    box-shadow: 0 0 20px #30ff30;
+}
+
     
