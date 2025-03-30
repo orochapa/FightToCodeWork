@@ -1,10 +1,91 @@
 #gameCanvas {
     width: 75%;
     height: 75%;
-    border: 4px solid black;  /* Optional border to visualize the canvas edges */
-    position: absolute;       /* Position the canvas absolutely within its parent container */
-    top: 50%;                 /* Position from the top of the viewport */
-    left: 50%;                /* Position from the left of the viewport */
-    transform: translate(-50%, -50%);  /* Shift it back by 50% of its width and height */
-    z-index: -1;              /* Push the canvas to the background */
+    border: 4px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
+
+/* Retro Popup */
+.retro-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    border: 4px solid #fff;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Action Buttons Container */
+.action-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+/* Retro Buttons */
+.retro-button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #333;
+    color: #fff;
+    border: 3px solid #fff;
+    cursor: pointer;
+}
+
+/* Question Modal */
+.retro-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    border: 4px solid #fff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    max-width: 400px;
+}
+
+.option-button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    border: 2px solid #fff;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.feedback.correct { color: #0f0; } /* Green for correct */
+.feedback.incorrect { color: #f00; } /* Red for incorrect */
