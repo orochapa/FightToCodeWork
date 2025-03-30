@@ -25,9 +25,17 @@ function characterAction(event, character) {
     redraw(character);
 }
 
-// Function to redraw everything (background and character)
-function redraw(character) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas before redrawing
+// Function to redraw everything (background, player, and enemy)
+function redraw(player, enemy) {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Draw the background
-    character.draw(ctx);  // Draw the character
+
+    // Draw the player
+    if (player) {
+        player.draw(ctx);  // Draw the player on the canvas
+    }
+
+    if (enemy) {
+        enemy.draw(ctx);  // Draw the enemy on the canvas
+    }
 }
+

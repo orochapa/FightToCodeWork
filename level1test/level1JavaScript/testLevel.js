@@ -31,41 +31,32 @@ background.onload = function() {
     );
 
     // Create enemy
-    enemy = createEnemies(
-        'level1graphics/KillerBunny2.png',
+    enemy = createEnemy(
+        'level1graphics/RightWolfMan.png',
         canvas.width / 2,
         canvas.height -150,
-        300, 300,
+        100, 100,
         3, 25, 5
     );
 
-    // Start game loop when images are loaded
-    let loadedCount = 0;
-    const requiredImages = 2;
-
-    function attemptGameStart() {
-        loadedCount++;
-        if (loadedCount >= requiredImages) {
-            gameLoop();
-        }
-    }
-
-    // Set up load handlers for player and enemy
-    player.image.onload = attemptGameStart;
-    enemy.image.onload = attemptGameStart;  // Make sure enemy's image is loaded too
+    gameLoop();
 };
 
-function gameLoop() {
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Redraw background
-    
-    // Move and draw the enemy
-    moveEnemyRandomly(enemy);  // Move the enemy randomly
-    enemy.draw(ctx);            // Draw the enemy
+function gameLoop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas before redrawing
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Redraw the background
+
+    // Draw the enemy if it's loaded
+    if (enemy.isLoaded) {
+        enemy.draw(ctx);  // Draw the enemy if it's loaded
+    }
+
+    // Draw the player (if needed)
+    if (player) {
+        player.draw(ctx);  // Draw player after enemy
+    }
 
     // Continue the game loop
-    requestAnimationFrame(gameLoop);
+    requestAnimationFrame(gameLoop);  // Recursively call the game loop to keep updating
 }
-
-gameLoop();

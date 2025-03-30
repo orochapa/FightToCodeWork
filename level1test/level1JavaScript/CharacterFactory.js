@@ -4,11 +4,11 @@ console.log("Character Creation Loaded");
 function createPlayer(imageSrc, x, y, width, height, health, attack, speed) {
     // Create the character object
     const character = {
+        image: new Image(),  // Correctly initialize the image property once
         x: x,
         y: y,
         width: width,
         height: height,
-        image: new Image(),  // Correctly initialize the image property once
         health: health,
         attack: attack,
         speed: speed, // Movement speed
