@@ -18,12 +18,19 @@ function characterAction(event, character) {
     }
 
     // Ensure the character stays within the canvas boundaries
-    character.x = Math.max(0, Math.min(character.x, canvas.width - character.width));  // Left/Right bounds
-    character.y = Math.max(0, Math.min(character.y, canvas.height - character.height));  // Top/Bottom bounds
+    character.x = Math.min(character.x, canvas.width - 200);  // Right boundary
+    character.y = Math.min(character.y, canvas.height - 200);  // Bottom boundary
+    // Left boundary: Ensure character doesn't go past the left edge
+    character.x = Math.max(character.x, -125);  // Left boundary
+
+    // Top boundary: Ensure character doesn't go past the top edge
+    character.y = Math.max(character.y, -125);  // Top boundary
+
 
     // Redraw everything
     redraw(character);
 }
+
 
 // Function to redraw everything (background and character)
 function redraw(character) {

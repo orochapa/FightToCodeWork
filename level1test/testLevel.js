@@ -15,7 +15,7 @@ const ctx = canvas.getContext('2d');  // 2D drawing context
 
 // Set the background image
 const background = new Image();
-background.src = 'OpenMapField.png';  // Replace with your actual image path
+background.src = 'OpenMapField.webp';  // Replace with your actual image path
 
 background.onload = () => {
     // Resize canvas to fill the window
