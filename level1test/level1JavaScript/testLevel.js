@@ -1,44 +1,71 @@
-console.log("Hello World");
-
-// Need a window to come up when the program starts check
-// We now need this window to be the backgound of the game
-// We are working on character right now.
-// We need a factory method to produce characters.
-
-// level.js
-
 console.log("Level Loaded");
 
-// Get the canvas element by ID
+// Get canvas and context
 const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');  // 2D drawing context
+const ctx = canvas.getContext('2d');
 
-// Set the background image
+// Background image
 const background = new Image();
-background.src = 'level1graphics/OpenMapField.webp';  // Replace with your actual image path
+background.src = 'level1graphics/OpenMapField.webp';
 
-background.onload = () => {
-    // Resize canvas to fill the window
-    canvas.width = canvas.offsetWidth;   // Match the CSS width
-    canvas.height = canvas.offsetHeight; // Match the CSS height
+// Game objects (player and enemy)
+let player = null;
+let enemy = null;
 
-    // Draw the background image once it's loaded
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Stretch it to fit the canvas
+// Game initialization
+background.onload = function() {
+    // Set canvas size
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
     
-    // Creating Player
+    // Draw background
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    const health = 25;
-    const attack = 5;
-    const speed = 7;
-    const player = createPlayer('level1graphics/RightKnight.png', canvas.width / 2, canvas.height - 150, 300, 300, health, attack, speed);
+    // Create player (assuming createPlayer exists)
+    player = createPlayer(
+        'level1graphics/RightKnight.png',
+        canvas.width / 2,
+        canvas.height - 150,
+        300, 300,
+        25, 5, 7
+    );
 
-    const enemyHealth = 25;
-    const enemyAttack = 5;
-    const enemySpeed = 7;
-    const enemy = createEnemies('level1graphics/KillerBunny-2.png', canvas.width / 2, canvas.height - 150, 100, 100, enemyHealth, enemyAttack, enemySpeed);
+    // Create enemy
+    enemy = createEnemies(
+        'level1graphics/KillerBunny2.png',
+        canvas.width / 2,
+        canvas.height -150,
+        300, 300,
+        3, 25, 5
+    );
 
+    // Start game loop when images are loaded
+    let loadedCount = 0;
+    const requiredImages = 2;
+
+    function attemptGameStart() {
+        loadedCount++;
+        if (loadedCount >= requiredImages) {
+            gameLoop();
+        }
+    }
+
+    // Set up load handlers for player and enemy
+    player.image.onload = attemptGameStart;
+    enemy.image.onload = attemptGameStart;  // Make sure enemy's image is loaded too
 };
 
-update(player, enemy);
+function gameLoop() {
 
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Redraw background
+    
+    // Move and draw the enemy
+    moveEnemyRandomly(enemy);  // Move the enemy randomly
+    enemy.draw(ctx);            // Draw the enemy
 
+    // Continue the game loop
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();

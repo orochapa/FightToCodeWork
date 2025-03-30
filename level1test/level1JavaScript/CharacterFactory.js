@@ -1,5 +1,3 @@
-// createCharacter.js
-
 console.log("Character Creation Loaded");
 
 // Factory method to create the character
@@ -10,19 +8,19 @@ function createPlayer(imageSrc, x, y, width, height, health, attack, speed) {
         y: y,
         width: width,
         height: height,
-        image: new Image(),
+        image: new Image(),  // Correctly initialize the image property once
         health: health,
         attack: attack,
         speed: speed, // Movement speed
 
-        // Load character image
-        image: new Image(),
+        // Draw function to render the character on the canvas
         draw: function(ctx) {
             ctx.drawImage(this.image, this.x, this.y, this.width, this.height);  // Draw character
         }
     };
 
-    character.image.src = imageSrc;  // Set the character's image source
+    // Set the character's image source
+    character.image.src = imageSrc;
 
     // Ensure the character is drawn only after the image is fully loaded
     character.image.onload = () => {
@@ -35,7 +33,6 @@ function createPlayer(imageSrc, x, y, width, height, health, attack, speed) {
     };
 
     // Listen for keydown events to move the character
-    // Pass the character object to the function
     document.addEventListener('keydown', (event) => characterAction(event, character));
 
     return character; // Return the created character

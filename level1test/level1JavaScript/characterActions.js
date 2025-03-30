@@ -1,5 +1,3 @@
-// characterActions.js
-
 console.log("Character Actions Loaded");
 
 // Listen for keydown events to move the character
@@ -18,14 +16,10 @@ function characterAction(event, character) {
     }
 
     // Ensure the character stays within the canvas boundaries
-    character.x = Math.min(character.x, canvas.width - 200);  // Right boundary
-    character.y = Math.min(character.y, canvas.height - 200);  // Bottom boundary
-    // Left boundary: Ensure character doesn't go past the left edge
-    character.x = Math.max(character.x, -125);  // Left boundary
-
-    // Top boundary: Ensure character doesn't go past the top edge
-    character.y = Math.max(character.y, -125);  // Top boundary
-
+    character.x = Math.min(character.x, canvas.width - character.width);  // Right boundary
+    character.y = Math.min(character.y, canvas.height - character.height);  // Bottom boundary
+    character.x = Math.max(character.x, 0);  // Left boundary: Ensure character doesn't go past the left edge
+    character.y = Math.max(character.y, 0);  // Top boundary: Ensure character doesn't go past the top edge
 
     // Redraw everything
     redraw(character);
@@ -33,7 +27,7 @@ function characterAction(event, character) {
 
 // Function to redraw everything (background and character)
 function redraw(character) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas before redrawing
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Draw the background
     character.draw(ctx);  // Draw the character
 }
