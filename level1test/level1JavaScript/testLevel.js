@@ -25,27 +25,5 @@ background.onload = () => {
     // Draw the background image once it's loaded
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Stretch it to fit the canvas
 
-    // Create the character using the factory method
-    const character = createCharacter('level1graphics/RightKnight.png', canvas.height, 240, 300, 300);  // Initial position and size
-    createEnemies();
-    // Ensure the character is drawn only after the image is fully loaded
-    character.image.onload = () => {
-        character.draw(ctx);  // Draw the character on the canvas
-    };
-
-    // Check if the character image failed to load
-    character.image.onerror = () => {
-        console.error("Failed to load character image: RightKnight.png");
-    };
-
-    // Listen for keydown events to move the character
-    document.addEventListener('keydown', (event) => characterAction(event, character));  // Pass the character object to the function
+    createPlayer();
 };
-
-function createEnemies(){
-    const killerBunny = createCharacter('level1graphics/KillerBunny-2.png', canvas.height, 240, 300, 300);
-
-    killerBunny.image.onload = () => {
-        killerBunny.draw(ctx);  // Draw the character on the canvas
-    };
-}

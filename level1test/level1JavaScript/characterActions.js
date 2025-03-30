@@ -31,6 +31,10 @@ function characterAction(event, character) {
     redraw(character);
 }
 
+// function for ai movements.
+function aiActions(){
+
+}
 
 // Function to redraw everything (background and character)
 function redraw(character) {
