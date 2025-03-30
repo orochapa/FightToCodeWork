@@ -55,10 +55,17 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Navigate to different pages
+// Navigation Function
 function navigateTo(page) {
+    window.location.href = `../level1test/${page}`;
+}
+
+// script.js
+function navigateTologin(page) {
     window.location.href = page;
 }
+
+
 
 // Handle form submission and store username
 function handleFormSubmit(event) {
