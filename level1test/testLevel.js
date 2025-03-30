@@ -27,7 +27,7 @@ background.onload = () => {
 
     // Create the character using the factory method
     const character = createCharacter('RightKnight.png', canvas.height, 240, 300, 300);  // Initial position and size
-
+    createEnemies();
     // Ensure the character is drawn only after the image is fully loaded
     character.image.onload = () => {
         character.draw(ctx);  // Draw the character on the canvas
@@ -41,3 +41,11 @@ background.onload = () => {
     // Listen for keydown events to move the character
     document.addEventListener('keydown', (event) => characterAction(event, character));  // Pass the character object to the function
 };
+
+function createEnemies(){
+    const killerBunny = createCharacter('KillerBunny-2.png', canvas.height, 240, 300, 300);
+
+    killerBunny.image.onload = () => {
+        killerBunny.draw(ctx);  // Draw the character on the canvas
+    };
+}
