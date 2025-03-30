@@ -2,7 +2,7 @@ console.log("Enemy Creation Loaded");
 
 function createEnemy(imageSrc, x, y, width, height, health, attack, speed) {
     const enemy = {
-        image: new Image(),        // Create a new image object for the enemy
+        image: new Image(),
         x: x,
         y: y,
         width: width,
@@ -10,79 +10,79 @@ function createEnemy(imageSrc, x, y, width, height, health, attack, speed) {
         health: health,
         attack: attack,
         speed: speed,
-        isLoaded: false, // Flag to track if the image is loaded
-        direction: '', // Direction for random movement (left, right, up, down)
-        velocityX: 0,  // X-axis velocity for smooth movement
-        velocityY: 0,  // Y-axis velocity for smooth movement
-        moveInterval: 500, // Interval (in ms) between random movement direction changes
-        lastMoveTime: Date.now(), // Time of the last movement change
+        isLoaded: false,
+        direction: '',
+        velocityX: 0,
+        velocityY: 0,
+        moveInterval: 500,
+        lastMoveTime: Date.now(),
 
-        // Draw function to render the enemy on the canvas
         draw: function(ctx) {
             if (this.isLoaded) {
-                ctx.drawImage(this.image, this.x, this.y, this.width, this.height);  // Draw enemy
+                ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
             } else {
-                console.log("Enemy image is not loaded yet");  // Debug message
+                ctx.fillStyle = 'purple';
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+                ctx.fillStyle = 'white';
+                ctx.font = '12px Arial';
+                ctx.fillText('Loading Enemy...', this.x, this.y - 5);
             }
         },
 
-        // Move the enemy (with smooth movement)
         move: function() {
             const currentTime = Date.now();
             if (currentTime - this.lastMoveTime >= this.moveInterval) {
-                this.randomMove();  // Change direction randomly after the interval
-                this.lastMoveTime = currentTime;  // Update the last movement time
+                this.randomMove();
+                this.lastMoveTime = currentTime;
             }
 
-            // Update position based on velocity
             this.x += this.velocityX;
             this.y += this.velocityY;
 
-            // Ensure the enemy stays within the canvas bounds
-            this.x = Math.max(0, Math.min(this.x, canvas.width - this.width));
-            this.y = Math.max(0, Math.min(this.y, canvas.height - this.height));
+            const canvasWidth = document.getElementById('gameCanvas').width;
+            const canvasHeight = document.getElementById('gameCanvas').height;
+
+            this.x = Math.max(0, Math.min(this.x, canvasWidth - this.width));
+            this.y = Math.max(0, Math.min(this.y, canvasHeight - this.height));
         },
 
-        // Random movement logic with smooth velocity
         randomMove: function() {
             const directions = ['left', 'right', 'up', 'down'];
             const randomDirection = directions[Math.floor(Math.random() * directions.length)];
 
-            // Adjust velocity based on the random direction
             switch (randomDirection) {
                 case 'left':
-                    this.velocityX = -this.speed;  // Move left
-                    this.velocityY = 0;  // Stop moving vertically
+                    this.velocityX = -this.speed;
+                    this.velocityY = 0;
                     break;
                 case 'right':
-                    this.velocityX = this.speed;  // Move right
-                    this.velocityY = 0;  // Stop moving vertically
+                    this.velocityX = this.speed;
+                    this.velocityY = 0;
                     break;
                 case 'up':
-                    this.velocityX = 0;  // Stop moving horizontally
-                    this.velocityY = -this.speed;  // Move up
+                    this.velocityX = 0;
+                    this.velocityY = -this.speed;
                     break;
                 case 'down':
-                    this.velocityX = 0;  // Stop moving horizontally
-                    this.velocityY = this.speed;  // Move down
+                    this.velocityX = 0;
+                    this.velocityY = this.speed;
                     break;
             }
         }
     };
 
-    // Load the image for the enemy
     enemy.image.src = imageSrc;
+    console.log("Attempting to load enemy image from:", imageSrc);
 
-    // When the enemy image is successfully loaded
     enemy.image.onload = function() {
-        enemy.isLoaded = true;  // Mark as loaded
-        console.log("Enemy image loaded:", imageSrc);  // Log success message
+        enemy.isLoaded = true;
+        console.log("Enemy image loaded:", imageSrc);
     };
 
-    // If the enemy image fails to load
     enemy.image.onerror = function() {
-        console.error("Failed to load enemy image:", imageSrc);  // Log error message
+        console.error("Failed to load enemy image:", imageSrc);
+        enemy.image.src = 'level1graphics/KillerBunny2.webp'; // fallback
     };
 
-    return enemy; // Return the created enemy object
+    return enemy;
 }

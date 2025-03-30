@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Page</title>
-    <link rel="stylesheet" href="testlevel1style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Retro font -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Page</title>
+  <link rel="stylesheet" href="testlevel1style.css" />
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-    <script src="level1JavaScript/characterFactory.js"></script>
-    <script src="level1JavaScript/testLevel.js"></script>
-    <script src="level1JavaScript/characterActions.js"></script>
-    <script src="level1JavaScript/enemyFactory.js"></script>
+  <div id="startScreen" class="overlay">
+    <div class="message-box">
+      <h2>GET READY TO FIGHT & LEARN</h2>
+      <p>Press SPACE to start the game</p>
+    </div>
+  </div>
+
+  <div id="gameControls" class="controls-container" style="display: none;">
+    <button id="attackButton">ATTACK</button>
+    <button id="blockButton">BLOCK</button>
+  </div>
+
+  <div id="questionModal" class="modal">
+    <div class="modal-content">
+      <h3>Answer Correctly To Continue</h3>
+      <p id="questionText"></p>
+      <div class="options-container">
+        <button class="option-button" id="optionA" data-option="A"></button>
+        <button class="option-button" id="optionB" data-option="B"></button>
+        <button class="option-button" id="optionC" data-option="C"></button>
+        <button class="option-button" id="optionD" data-option="D"></button>
+      </div>
+      <div id="feedback" class="feedback"></div>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Game Logic Files -->
+  <script src="level1JavaScript/characterFactory.js"></script>
+  <script src="level1JavaScript/testLevel.js"></script>
+  <script src="level1JavaScript/characterActions.js"></script>
+  <script src="level1JavaScript/enemyFactory.js"></script>
+  <script src="level1JavaScript/questionActions.js"></script>
+  <script src="gameLogic.js"></script>
+
+  <script>
+    // Start screen logic
+    const startScreen = document.getElementById('startScreen');
+    const gameControls = document.getElementById('gameControls');
+
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Space' && startScreen.style.display !== 'none') {
+        startScreen.style.display = 'none';
+        gameControls.style.display = 'flex';
+        console.log("Game started!");
+      }
+    });
+  </script>
 </body>
 </html>

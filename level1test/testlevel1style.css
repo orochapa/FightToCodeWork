@@ -1,91 +1,180 @@
 #gameCanvas {
     width: 75%;
     height: 75%;
-    border: 4px solid black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
+    border: 4px solid black;  /* Optional border to visualize the canvas edges */
+    position: absolute;       /* Position the canvas absolutely within its parent container */
+    top: 50%;                 /* Position from the top of the viewport */
+    left: 50%;                /* Position from the left of the viewport */
+    transform: translate(-50%, -50%);  /* Shift it back by 50% of its width and height */
+    z-index: -1;              /* Push the canvas to the background */
 }
 
-/* Retro Popup */
-.retro-popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 18px;
-    border: 4px solid #fff;
-    text-align: center;
-    z-index: 10;
-}
-
-/* Action Buttons Container */
-.action-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-}
-
-/* Retro Buttons */
-.retro-button {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #333;
-    color: #fff;
-    border: 3px solid #fff;
-    cursor: pointer;
-}
-
-/* Question Modal */
-.retro-modal {
+/* Start Screen Styles */
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 100;
+}
+
+.message-box {
+    background-color: #000;
+    border: 4px solid #30ff30;
+    color: #30ff30;
+    padding: 20px 40px;
+    text-align: center;
+    font-family: 'Press Start 2P', monospace, Arial;
+    max-width: 80%;
+    box-shadow: 0 0 20px #30ff30;
+}
+
+.message-box h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.message-box p {
+    font-size: 1.2em;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Game Controls */
+.controls-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.controls-container button {
+    background-color: #000;
+    color: #30ff30;
+    border: 3px solid #30ff30;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-family: 'Press Start 2P', monospace, Arial;
+    cursor: pointer;
+    box-shadow: 0 0 10px #30ff30;
+    transition: all 0.2s;
+}
+
+.controls-container button:hover {
+    background-color: #30ff30;
+    color: #000;
+}
+
+/* Question Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
 }
 
 .modal-content {
-    background: #000;
-    color: #fff;
+    background-color: #000;
+    border: 4px solid #30ff30;
+    color: #30ff30;
     padding: 20px;
-    border: 4px solid #fff;
-    font-family: 'Press Start 2P', cursive;
+    width: 80%;
+    max-width: 600px;
+    font-family: 'Press Start 2P', monospace, Arial;
+    box-shadow: 0 0 20px #30ff30;
+}
+
+.modal-content h3 {
     text-align: center;
-    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .option-button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
+    background-color: #000;
+    color: #30ff30;
+    border: 2px solid #30ff30;
     padding: 10px;
-    background: #333;
-    color: #fff;
-    border: 2px solid #fff;
-    font-family: 'Press Start 2P', cursive;
+    text-align: left;
+    font-family: 'Press Start 2P', monospace, Arial;
+    font-size: 0.9em;
     cursor: pointer;
 }
 
-.feedback {
-    margin-top: 10px;
-    font-size: 14px;
+.option-button:hover {
+    background-color: #003300;
 }
 
-.feedback.correct { color: #0f0; } /* Green for correct */
-.feedback.incorrect { color: #f00; } /* Red for incorrect */
+.option-button[data-correct="true"] {
+    background-color: #006600;
+    color: white;
+}
+
+.option-button[data-incorrect="true"] {
+    background-color: #660000;
+    color: white;
+}
+
+.feedback {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+.feedback.correct {
+    background-color: #006600;
+    color: white;
+}
+
+.feedback.incorrect {
+    background-color: #660000;
+    color: white;
+}
+
+#playerHealth, #enemyHealth {
+    position: fixed;
+    top: 20px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    padding: 8px 12px;
+    background-color: black;
+    border: 2px solid #30ff30;
+    color: #30ff30;
+    z-index: 50;
+}
+
+#playerHealth {
+    left: 20px;
+}
+
+#enemyHealth {
+    right: 20px;
+}

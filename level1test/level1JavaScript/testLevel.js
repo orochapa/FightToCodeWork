@@ -30,24 +30,17 @@ background.onload = function() {
         25, 5, 10
     );
 
-    // Create enemy
-    // Create enemy with aggression range (let's say 200px)
+    // Create enemy (Killer Bunny version)
     enemy = createEnemy(
-    'level1graphics/RightWolfMan.png', // Image source
-    canvas.width / 2,                  // X position
-    canvas.height / 2,                 // Y position
-    100, 100,                          // Width, height
-    25,                                // Health
-    5,                                 // Attack
-    2,                                 // Speed
-    200                                // Aggression range (px)
+        'level1graphics/KillerBunny2.webp',
+        canvas.width / 2,
+        canvas.height / 2,
+        100, 100,
+        25, 5, 2, 200
     );
-
-
 
     gameLoop();
 };
-
 
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas before redrawing
