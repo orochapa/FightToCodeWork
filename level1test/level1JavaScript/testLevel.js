@@ -57,3 +57,26 @@ function gameLoop() {
 
     requestAnimationFrame(gameLoop);
 }
+
+//Adding music to the level 1
+
+// Select the audio element
+const bgMusic = document.getElementById('bg-music');
+
+// Play the music when the game starts
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space' && startScreen.style.display !== 'none') {
+        startScreen.style.display = 'none';
+        gameControls.style.display = 'flex';
+
+        // Start the music
+        bgMusic.play().catch(error => console.log("Music play error:", error));
+        console.log("Game started with music!");
+    }
+});
+
+// Optionally, stop or pause music when leaving the page or game over
+window.addEventListener('beforeunload', () => {
+    bgMusic.pause();
+    bgMusic.currentTime = 0;  // Reset the music
+});
