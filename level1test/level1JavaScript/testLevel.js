@@ -27,17 +27,22 @@ background.onload = function() {
         canvas.width / 2,
         canvas.height - 150,
         300, 300,
-        25, 5, 7
+        25, 5, 10
     );
 
     // Create enemy
+    // Create enemy with aggression range (let's say 200px)
     enemy = createEnemy(
-        'level1graphics/RightWolfMan.png',
-        canvas.width / 2,
-        canvas.height -150,
-        100, 100,
-        3, 25, 5
+    'level1graphics/RightWolfMan.png', // Image source
+    canvas.width / 2,                  // X position
+    canvas.height / 2,                 // Y position
+    100, 100,                          // Width, height
+    25,                                // Health
+    5,                                 // Attack
+    2,                                 // Speed
+    200                                // Aggression range (px)
     );
+
 
     gameLoop();
 };
@@ -47,16 +52,16 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas before redrawing
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Redraw the background
 
-    // Draw the enemy if it's loaded
-    if (enemy.isLoaded) {
-        enemy.draw(ctx);  // Draw the enemy if it's loaded
+    // Move the enemy and draw it
+    if (enemy) {
+        enemy.move();  // Move the enemy smoothly
+        enemy.draw(ctx);  // Draw the enemy on the canvas
     }
 
     // Draw the player (if needed)
     if (player) {
-        player.draw(ctx);  // Draw player after enemy
+        player.draw(ctx);  // Draw player
     }
 
-    // Continue the game loop
     requestAnimationFrame(gameLoop);  // Recursively call the game loop to keep updating
 }
