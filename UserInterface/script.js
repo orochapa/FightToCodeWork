@@ -60,6 +60,11 @@ function navigateTo(page) {
     window.location.href = `../level1test/${page}`;
 }
 
+// script.js
+function navigateTologin(page) {
+    window.location.href = page;
+}
+
 
 
 // Handle form submission and store username
