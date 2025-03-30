@@ -372,3 +372,18 @@ h1 {
 audio {
     display: none;
 }
+
+
+/*Transition from index to login*/
+
+/* Add a fade transition to the body */
+body {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* When the page loads, make the body visible */
+body.loaded {
+    opacity: 1;
+}
+

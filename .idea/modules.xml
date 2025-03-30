@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FightToCodeWork.2.iml" filepath="$PROJECT_DIR$/.idea/FightToCodeWork.2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/User Interface/User Interface.iml" filepath="$PROJECT_DIR$/User Interface/User Interface.iml" />
     </modules>
   </component>
 </project>
