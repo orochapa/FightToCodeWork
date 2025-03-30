@@ -86,3 +86,24 @@ function createEnemy(imageSrc, x, y, width, height, health, attack, speed) {
 
     return enemy; // Return the created enemy object
 }
+
+
+function spawnEnemies() {
+    const enemies = [];
+
+    for (let i = 0; i < 4; i++) {  // Create 4 enemies
+        const enemy = createEnemy(
+            'level1graphics/RightWolfMan.png', // Image source
+            Math.random() * (canvas.width - 100),  // Random X position (ensures no overlap)
+            Math.random() * (canvas.height - 100), // Random Y position (ensures no overlap)
+            100, 100,  // Width and Height of the enemy
+            25,        // Health
+            5,         // Attack
+            2,         // Speed
+            200        // Aggression range (px)
+        );
+        enemies.push(enemy);  // Add enemy to the enemies array
+    }
+
+    return enemies;  // Return the array of enemies
+}

@@ -44,6 +44,7 @@ background.onload = function() {
     );
 
 
+
     gameLoop();
 };
 
