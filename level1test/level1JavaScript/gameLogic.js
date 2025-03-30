@@ -19,8 +19,9 @@ function checkWinCondition() {
     if (playerHealth <= 0) {
         showEndMessage("Game Over! Try again?", () => location.reload());
     } else if (enemyHealth <= 0) {
-        showEndMessage("Great job! You defeated the Killer Bunny! Try again?", () => location.reload());
+        window.location.href = "../UserInterface/level-complete.html";
     }
+    
 }
 
 function showEndMessage(message, callback) {
@@ -48,4 +49,4 @@ function showEndMessage(message, callback) {
     document.body.appendChild(overlay);
 }
 
-updateHealthBars(); // Initial call to show bars
+updateHealthBars(); // 👈 Don't forget this

@@ -178,3 +178,28 @@
 #enemyHealth {
     right: 20px;
 }
+
+#enemyAttackModal .options-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#enemyAttackModal button {
+    background-color: #000;
+    color: #30ff30;
+    border: 3px solid #30ff30;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-family: 'Press Start 2P', monospace, Arial;
+    cursor: pointer;
+    box-shadow: 0 0 10px #30ff30;
+    transition: all 0.2s;
+}
+
+#enemyAttackModal button:hover {
+    background-color: #30ff30;
+    color: black;
+}
+    

@@ -387,3 +387,25 @@ body.loaded {
     opacity: 1;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modal-content {
+    background: black;
+    color: #00ffff;
+    padding: 30px;
+    border: 3px solid #ff00ff;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 0 0 20px #ff00ff;
+  }
+  

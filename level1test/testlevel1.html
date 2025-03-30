@@ -6,7 +6,9 @@
   <title>Game Page</title>
   <link rel="stylesheet" href="testlevel1style.css" />
 </head>
+
 <body>
+  <!-- Start Screen Overlay -->
   <div id="startScreen" class="overlay">
     <div class="message-box">
       <h2>GET READY TO FIGHT & LEARN</h2>
@@ -14,11 +16,13 @@
     </div>
   </div>
 
+  <!-- Game Controls -->
   <div id="gameControls" class="controls-container" style="display: none;">
     <button id="attackButton">ATTACK</button>
     <button id="blockButton">BLOCK</button>
   </div>
 
+  <!-- Question Modal -->
   <div id="questionModal" class="modal">
     <div class="modal-content">
       <h3>Answer Correctly To Continue</h3>
@@ -33,18 +37,30 @@
     </div>
   </div>
 
+  <!-- Enemy Attack Modal -->
+  <div id="enemyAttackModal" class="modal">
+    <div class="modal-content">
+      <h3>The Killer Bunny slashes at you!</h3>
+      <div class="options-container">
+        <button id="blockYes">Block</button>
+        <button id="blockNo">Take the hit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Canvas -->
   <canvas id="gameCanvas"></canvas>
 
-  <!-- Game Logic Files -->
+  <!-- Scripts -->
   <script src="level1JavaScript/characterFactory.js"></script>
   <script src="level1JavaScript/testLevel.js"></script>
   <script src="level1JavaScript/characterActions.js"></script>
   <script src="level1JavaScript/enemyFactory.js"></script>
   <script src="level1JavaScript/questionActions.js"></script>
-  <script src="gameLogic.js"></script>
+  <script src="level1JavaScript/gameLogic.js"></script>
 
+  <!-- Start Game on SPACE -->
   <script>
-    // Start screen logic
     const startScreen = document.getElementById('startScreen');
     const gameControls = document.getElementById('gameControls');
 

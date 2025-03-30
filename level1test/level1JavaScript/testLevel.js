@@ -30,9 +30,9 @@ background.onload = function() {
         25, 5, 10
     );
 
-    // Create enemy (Killer Bunny version)
+    // Create enemy using Killer Bunny image
     enemy = createEnemy(
-        'level1graphics/KillerBunny2.webp',
+        'level1graphics/KillerBunny2.png', // ← final image to use
         canvas.width / 2,
         canvas.height / 2,
         100, 100,
@@ -46,16 +46,14 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas before redrawing
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Redraw the background
 
-    // Move the enemy and draw it
     if (enemy) {
-        enemy.move();  // Move the enemy smoothly
-        enemy.draw(ctx);  // Draw the enemy on the canvas
+        enemy.move();
+        enemy.draw(ctx);
     }
 
-    // Draw the player (if needed)
     if (player) {
-        player.draw(ctx);  // Draw player
+        player.draw(ctx);
     }
 
-    requestAnimationFrame(gameLoop);  // Recursively call the game loop to keep updating
+    requestAnimationFrame(gameLoop);
 }
