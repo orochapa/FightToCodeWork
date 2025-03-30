@@ -32,55 +32,73 @@ body::before {
     z-index: -1;
 }
 
-/* Loading Screen */
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+/* Main Container */
+.main-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 30px;
+}
+
+/* Welcome Container */
+.welcome-container {
     background: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 4s ease-out;
-}
-
-.loader {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-}
-
-/* Container */
-.container {
-    background: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 0, 150, 0.8);
     animation: glow 2s infinite alternate;
     text-align: center;
-    margin-bottom: 40px; /* Adds space below the container */
+    width: 600px;
+    margin-top: -100px;  /* Moves the welcome message up */
 }
 
-/* Buttons container styling */
-.buttons-container {
-    position: absolute;
-    bottom: 200px; /* Ensures buttons are just below the black box */
-    left: 50%;
-    transform: translateX(-50%); /* Center buttons horizontally */
+/* Hierarchy Container */
+.hierarchy-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Level Containers */
+.level {
+    padding: 30px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff00ff;
+    transition: 0.3s;
     text-align: center;
+}
+
+/* Styling each level differently */
+.level-1 {
+    background: #ff00ff;
+}
+.level-2 {
+    background: #00ffff;
+}
+.level-3 {
+    background: #ffff00;
+    color: #000;
+}
+
+/* Hover effect */
+.level:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #fff;
+}
+
+/* Buttons container */
+.buttons-container {
+    margin-top: 20px;
 }
 
 /* Button Styling */
 button {
-    margin-top: 30px; /* Adds space between the buttons */
-    padding: 30px 40px;
+    padding: 15px 30px;
     font-size: 1.2rem;
     color: white;
     background: #ff00ff;
@@ -95,23 +113,7 @@ button {
 /* Button hover effect */
 button:hover {
     background: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
-}
-
-/* Header Text */
-h1 {
-    font-size: 4rem;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: #ff00ff;
-    text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, 0 0 15px #ffff00;
-}
-
-/* Paragraph Text */
-p {
-    font-size: 1.5rem;
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+    box-shadow: 0 0 15px #00ffff;
 }
 
 /* Animations */
@@ -125,10 +127,3 @@ p {
     0% { box-shadow: 0 0 20px rgba(255, 0, 150, 0.8); }
     100% { box-shadow: 0 0 30px rgba(0, 255, 150, 0.8); }
 }
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-

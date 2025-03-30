@@ -5,39 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-
-<div id="loading-screen">
-  <div class="loader"></div>
-</div>
-
 <div class="container">
-  <h1>Login Page</h1>
-  <p>Log in to continue</p>
-
-  <!-- Login Form -->
-  <form id="login-form">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required />
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
-    </div>
-    <div>
-      <button type="submit">Login</button>
-    </div>
+  <h1>Login</h1>
+  <form onsubmit="handleFormSubmit(event)">
+    <input type="text" placeholder="Username" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Login</button>
   </form>
+
+  <!-- Back button -->
+  <div class="buttons-container">
+    <button onclick="navigateTo('index.html')">Back</button>
+  </div>
 </div>
 
-<!-- Background Music -->
 <audio id="bg-music" autoplay loop>
-  <source src="RetroMusic copy.mp3" type="audio/mpeg">
+  <source src="assets/RetroMusic.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-<script src="script.js"></script>
 </body>
 </html>
