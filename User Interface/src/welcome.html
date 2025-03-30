@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="main-container">
+    <!-- Welcome Message -->
+    <div class="welcome-container">
+        <h1 id="welcome-message">Welcome, User!</h1>
+    </div>
+
+    <!-- Hierarchical Containers -->
+    <div class="hierarchy-container">
+        <div class="level level-1">Level 1</div>
+        <div class="level level-2">Level 2</div>
+        <div class="level level-3">Level 3</div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="buttons-container">
+        <button onclick="navigateTo('index.html')">Back</button>
+    </div>
+</div>
+
+<audio id="bg-music" autoplay loop>
+    <source src="assets/RetroMusic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+</body>
+</html>

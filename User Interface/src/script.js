@@ -31,27 +31,49 @@ window.addEventListener('load', function () {
     }, 4000); // Remove it after the fade-out animation ends (4 seconds)
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const bgMusic = document.getElementById('bg-music');
+// Keep the music continuous across pages
+window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
 
-    // Check if the music is already playing across pages
-    if (!localStorage.getItem('musicPlaying')) {
-        bgMusic.play();  // Play the music if it is not already playing
-        localStorage.setItem('musicPlaying', 'true');  // Store that music is playing
+    // Restore music playback time if it exists
+    if (sessionStorage.getItem('musicTime')) {
+        music.currentTime = parseFloat(sessionStorage.getItem('musicTime'));
     }
 
-    // Handle button clicks for login and create account
-    const loginButton = document.getElementById('login-btn');
-    const createAccountButton = document.getElementById('create-account-btn');
+    music.play();
 
-    loginButton.addEventListener('click', function () {
-        // Navigate to login page without reloading the music
-        window.location.href = 'login.html';
+    // Save playback time before navigating away
+    window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('musicTime', music.currentTime);
     });
 
-    createAccountButton.addEventListener('click', function () {
-        // Navigate to create account page without reloading the music
-        window.location.href = 'create-account.html';
-    });
+    // Display username on welcome page
+    const welcomeMessage = document.getElementById('welcome-message');
+    if (welcomeMessage) {
+        const username = localStorage.getItem('username') || 'Guest';
+        welcomeMessage.textContent = `Welcome, ${username}!`;
+    }
 });
 
+// Navigate to different pages
+function navigateTo(page) {
+    window.location.href = page;
+}
+
+// Handle form submission and store username
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    // Retrieve username from form
+    const username = document.querySelector('input[placeholder="Username"]').value;
+
+    if (username) {
+        // Store username in localStorage
+        localStorage.setItem('username', username);
+
+        // Redirect to welcome page
+        window.location.href = 'welcome.html';
+    } else {
+        alert('Please enter a username.');
+    }
+}
