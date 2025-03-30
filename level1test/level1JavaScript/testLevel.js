@@ -15,7 +15,7 @@ const ctx = canvas.getContext('2d');  // 2D drawing context
 
 // Set the background image
 const background = new Image();
-background.src = 'OpenMapField.webp';  // Replace with your actual image path
+background.src = 'level1graphics/OpenMapField.webp';  // Replace with your actual image path
 
 background.onload = () => {
     // Resize canvas to fill the window
@@ -26,7 +26,7 @@ background.onload = () => {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);  // Stretch it to fit the canvas
 
     // Create the character using the factory method
-    const character = createCharacter('RightKnight.png', canvas.height, 240, 300, 300);  // Initial position and size
+    const character = createCharacter('level1graphics/RightKnight.png', canvas.height, 240, 300, 300);  // Initial position and size
     createEnemies();
     // Ensure the character is drawn only after the image is fully loaded
     character.image.onload = () => {
@@ -43,7 +43,7 @@ background.onload = () => {
 };
 
 function createEnemies(){
-    const killerBunny = createCharacter('KillerBunny-2.png', canvas.height, 240, 300, 300);
+    const killerBunny = createCharacter('level1graphics/KillerBunny-2.png', canvas.height, 240, 300, 300);
 
     killerBunny.image.onload = () => {
         killerBunny.draw(ctx);  // Draw the character on the canvas
