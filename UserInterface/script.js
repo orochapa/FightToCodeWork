@@ -84,3 +84,17 @@ function handleFormSubmit(event) {
         alert('Please enter a username.');
     }
 }
+
+// Wait for the page to load
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Handle the fade-out transition and page navigation
+document.getElementById('loginButton').addEventListener('click', () => {
+    document.body.style.transition = 'opacity 1s ease-in-out';
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        window.location.href = 'login.html';
+    }, 1000); // Adjust timeout to match the transition duration
+});
