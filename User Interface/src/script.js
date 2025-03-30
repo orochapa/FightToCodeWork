@@ -30,3 +30,28 @@ window.addEventListener('load', function () {
         loadingScreen.style.display = 'none';
     }, 4000); // Remove it after the fade-out animation ends (4 seconds)
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const bgMusic = document.getElementById('bg-music');
+
+    // Check if the music is already playing across pages
+    if (!localStorage.getItem('musicPlaying')) {
+        bgMusic.play();  // Play the music if it is not already playing
+        localStorage.setItem('musicPlaying', 'true');  // Store that music is playing
+    }
+
+    // Handle button clicks for login and create account
+    const loginButton = document.getElementById('login-btn');
+    const createAccountButton = document.getElementById('create-account-btn');
+
+    loginButton.addEventListener('click', function () {
+        // Navigate to login page without reloading the music
+        window.location.href = 'login.html';
+    });
+
+    createAccountButton.addEventListener('click', function () {
+        // Navigate to create account page without reloading the music
+        window.location.href = 'create-account.html';
+    });
+});
+
